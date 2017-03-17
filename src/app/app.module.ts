@@ -8,7 +8,8 @@ import { Angular2TokenService } from 'angular2-token';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
-import { AuthGuard } from './guards/auth.guard'
+import { ApiService } from './services/api.service';
+import { AuthGuard } from './guards/auth.guard';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +18,7 @@ import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RoundComponent } from './round/round.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { ProfileComponent } from './profile/profile.component';
     AuthDialogComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    RoundComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
     AppRoutingModule,
     MaterializeModule
   ],
-  providers: [Angular2TokenService, AuthService, AuthGuard],
+  providers: [Angular2TokenService, AuthService, ApiService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
