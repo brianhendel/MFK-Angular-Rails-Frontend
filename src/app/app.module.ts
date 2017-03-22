@@ -19,6 +19,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RoundComponent } from './round/round.component';
+import { CreateRoundComponent } from './create-round/create-round.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RoundComponent } from './round/round.component';
     LoginFormComponent,
     RegisterFormComponent,
     ProfileComponent,
-    RoundComponent
+    RoundComponent,
+    CreateRoundComponent
   ],
   imports: [
     BrowserModule,
