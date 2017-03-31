@@ -1,7 +1,7 @@
 <div class="card grey lighten-4">
   <div class="container">
     <div class="row">
-      <div class="col s4">
+      <div class="col s12 left">
         <h5 style="margin:0em; padding-top:0.5em">{{round.name}}</h5>
       </div>
     </div>
@@ -46,8 +46,10 @@
   </div>
   <div class="container">
     <div class="card-action">
-      <a (click)="vote()" class="col s4 waves-effect waves-light btn orange" [ngClass]="{'disabled': !valid}">Vote on {{round.name}}</a>
-      <a class="col s4 waves-effect waves-light btn blue right" [ngClass]="{'disabled': !voted}">{{round.name}} Results</a>
+      <div class="row">
+        <a (click)="vote()" class="col s4 waves-effect waves-light btn orange" [ngClass]="{'disabled': !valid}">Vote</a>
+        <a class="col s4 waves-effect waves-light btn blue right" [ngClass]="{'disabled': !voted}">View Results</a>
+      </div>
     </div>
   </div>
 </div>

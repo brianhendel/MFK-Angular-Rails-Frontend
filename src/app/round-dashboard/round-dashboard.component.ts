@@ -27,6 +27,7 @@ export class RoundDashboardComponent implements OnInit {
       .then(rounds => {console.log(rounds)})
   }
 
+
   submitVote(v: Vote) {
     console.log("Submitted vote on " + v.round_id + " from " + v.user);
     console.log(v);

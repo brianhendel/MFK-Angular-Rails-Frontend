@@ -5,6 +5,7 @@ import { Vote } from '../models/vote';
 
 import { Angular2TokenService } from 'angular2-token';
 import { MaterializeModule } from 'angular2-materialize';
+import { ImageZoomModule } from 'angular2-image-zoom';
 
 @Component({
   selector: 'app-round',

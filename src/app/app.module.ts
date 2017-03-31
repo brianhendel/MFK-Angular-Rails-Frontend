@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { MaterializeModule } from 'angular2-materialize';
 import { Angular2TokenService } from 'angular2-token';
+import { ImageZoomModule } from 'angular2-image-zoom';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
@@ -40,7 +41,8 @@ import { RoundDashboardComponent } from './round-dashboard/round-dashboard.compo
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterializeModule
+    MaterializeModule,
+    ImageZoomModule
   ],
   providers: [Angular2TokenService, AuthService, ApiService, AuthGuard],
   bootstrap: [AppComponent]
