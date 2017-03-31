@@ -32,7 +32,7 @@ export class ApiService {
       .catch(this.handleError);
   }
   
-  private handleError(error: Response | any): Promise<any> {
+  private handleError(error: any): Promise<any> {
     console.error("ERROR FROM HANDLE-ERROR", error);
     return Promise.reject(error.message || error);
   }
