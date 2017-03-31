@@ -20,6 +20,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RoundComponent } from './round/round.component';
 import { CreateRoundComponent } from './create-round/create-round.component';
+import { RoundDashboardComponent } from './round-dashboard/round-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CreateRoundComponent } from './create-round/create-round.component';
     RegisterFormComponent,
     ProfileComponent,
     RoundComponent,
-    CreateRoundComponent
+    CreateRoundComponent,
+    RoundDashboardComponent
   ],
   imports: [
     BrowserModule,

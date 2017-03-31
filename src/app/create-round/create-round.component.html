@@ -1,3 +1,40 @@
-<p>
-  create-round works!
-</p>
+<div class="card grey lighten-4">
+  <div class="container">
+    <div class="row">
+      <div class="col s6">
+        <h5 style="margin:0em; padding-top:0.5em">Create a new round:</h5>
+      </div>
+    </div>
+    <div class="row">
+      <form (ngSubmit)="onCreateSubmit()" #f="ngForm">
+        <div class="row">
+
+          <div class="input-field col s12">
+            <input id="name" type="text" required name='name' [(ngModel)]="newRound.name" class="validate">
+            <label for="name">Name of Round</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="url_1" type="text" required name='url_1' [(ngModel)]="newRound.url_1" class="validate">
+            <label for="url_1">First image URL</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="url_2" type="text" required name='url_2' [(ngModel)]="newRound.url_2" class="validate">
+            <label for="url_2">Second image URL</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="url_3" type="text" required name='url_3' [(ngModel)]="newRound.url_3" class="validate">
+            <label for="url_3">Third image URL</label>
+          </div>
+
+          <div class="col s12">
+            <button type="submit" [disabled]="!f.valid" [ngClass]="{'disabled': !(f.valid)}" class="waves-effect waves-light btn blue right">Create Round</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

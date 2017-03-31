@@ -11,7 +11,9 @@ export class AuthService {
 
   userSignedIn$:Subject<boolean> = new Subject();
 
-  constructor(private authService: Angular2TokenService) {
+  constructor(
+    private authService: Angular2TokenService
+    ) {
     this.userSignedIn$.next(this.authService.userSignedIn())
    }
 

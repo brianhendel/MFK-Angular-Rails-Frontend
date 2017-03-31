@@ -1,7 +1,7 @@
 <div class="navbar-fixed">
   <nav role="navigation">
     <div class="nav-wrapper blue">
-      <a [routerLink]="['']" id="logo-container" class="brand-logo">Northlakes Militia MFK</a>
+      <a [routerLink]="['']" id="logo-container" class="brand-logo">NLM MFK</a>
       <ul class="right hide-on-sm-and-down">
         <li *ngIf="!(authService.userSignedIn$ | async)"><a (click)="presentAuthDialog()">Login</a></li>
         <li *ngIf="!(authService.userSignedIn$ | async)"><a (click)="presentAuthDialog('register')">Register</a></li>

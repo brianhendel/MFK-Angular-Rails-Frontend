@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
+import { Subject, Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
 
 import { Round } from '../models/round';
@@ -9,26 +10,30 @@ import { ROUNDS } from '../mock-data';
 
 @Injectable()
 export class ApiService {
-  private roundsUrl = '/rounds';
+  private roundsUrl = 'https://mfk-angular-rails-backend.herokuapp.com/rounds';
 
   constructor(private http: Http) { }
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
-  apiGetRounds(): Round[] {
-    return ROUNDS;
+  apiGetRounds(): Promise<Round[]> {
+    return this.http
+      .get(this.roundsUrl)
+      .toPromise()
+      .then(res => res.json())
+      .catch(this.handleError);
   }
 
-  apiCreateRounds(name: string, url_1: string, url_2: string, url_3: string): Promise<Round> {
+  apiCreateRounds(newRound): Promise<Round> {
     return this.http
-      .post(this.roundsUrl, JSON.stringify({ name: name, url_1: url_1, url_2: url_2, url_3: url_3 }), { headers: this.headers })
+      .post(this.roundsUrl, JSON.stringify(newRound), { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data)
+      .then(res => res.json())
       .catch(this.handleError);
   }
   
-  private handleError(error: any): Promise<any> {
-    console.error("ERROR FROM HANDLEERROR", error);
+  private handleError(error: Response | any): Promise<any> {
+    console.error("ERROR FROM HANDLE-ERROR", error);
     return Promise.reject(error.message || error);
   }
 

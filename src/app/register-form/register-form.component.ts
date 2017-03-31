@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -12,7 +13,10 @@ export class RegisterFormComponent implements OnInit {
 
   @Output() onFormResult = new EventEmitter<any>();
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
@@ -22,6 +26,7 @@ export class RegisterFormComponent implements OnInit {
       res => {
         if (res.status == 200) {
           this.onFormResult.emit({signedUp: true, res})
+          this.router.navigate(['/rounds'])
         }
       },
       err => {

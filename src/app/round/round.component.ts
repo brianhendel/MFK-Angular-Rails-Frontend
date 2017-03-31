@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Round } from '../models/round';
 import { Vote } from '../models/vote';
 
-import { ApiService } from '../services/api.service';
 import { Angular2TokenService } from 'angular2-token';
 import { MaterializeModule } from 'angular2-materialize';
 
@@ -12,41 +11,33 @@ import { MaterializeModule } from 'angular2-materialize';
   templateUrl: './round.component.html',
   styleUrls: ['./round.component.sass']
 })
+
 export class RoundComponent implements OnInit {
-  rounds: Round[] = [];
-  votes: Vote[] = [];
+  @Input() round: Round;
+  @Output() submitVote = new EventEmitter<Vote>();
   v: Vote;
   valid: boolean = false;
   voted: boolean = false;
 
-
   constructor(
-    private apiService: ApiService,
     protected authTokenService: Angular2TokenService,
   ) { }
 
   ngOnInit() {
-    this.rounds = this.apiService.apiGetRounds();
-    for (let r of this.rounds) {
-      this.votes.push(new Vote(r.id, this.authTokenService.currentUserData.email));
-    }
+    this.v = new Vote(this.round.id, this.authTokenService.currentUserData.email);
   }
 
-  submitVote(round_id: number) {
-    this.v = this.votes.find(vote => vote.round_id === round_id)
-    console.log("Submitted vote on " + round_id)
-    if (this.voteCheck(this.v) == true) {
-      console.log("voteCheck() returned TRUE");
+  vote() {
+    if (this.voteCheck(this.v)) {
+      this.submitVote.emit(this.v);
       this.voted = true;
-
+      this.resetVote();
     } else {
-      console.log("voteCheck() returned FALSE");
-
+      console.log("Not a valid vote, reset")
+      this.resetVote();
     }
-    console.log(this.v)
-    this.resetVotes(round_id);
-  }
 
+  }
 
   voteCheck(vote: Vote) {
     var set1: number = vote.vote_1_m + vote.vote_1_f + vote.vote_1_k;
@@ -71,23 +62,12 @@ export class RoundComponent implements OnInit {
     }
   }
 
-  resetVotes(round_id: number) {
-    this.v = this.votes.find(vote => vote.round_id === round_id)
-    this.v.vote_1_m = 0;
-    this.v.vote_1_f = 0;
-    this.v.vote_1_k = 0;
-    this.v.vote_2_m = 0;
-    this.v.vote_2_f = 0;
-    this.v.vote_2_k = 0;
-    this.v.vote_3_m = 0;
-    this.v.vote_3_f = 0;
-    this.v.vote_3_k = 0;
-
+  resetVote() {
+    this.v = new Vote(this.round.id, this.authTokenService.currentUserData.email);
     this.voteCheck(this.v);
   }
 
-  setSelect1(choice: string, round_id: number) {
-    this.v = this.votes.find(vote => vote.round_id === round_id)
+  setSelect1(choice: string) {
     if (choice == "m") {
       this.v.vote_1_m = 1;
       this.v.vote_1_f = 0;
@@ -109,8 +89,7 @@ export class RoundComponent implements OnInit {
     this.voteCheck(this.v);
   }
 
-  setSelect2(choice: string, round_id: number) {
-    this.v = this.votes.find(vote => vote.round_id === round_id)
+  setSelect2(choice: string) {
     if (choice == "m") {
       this.v.vote_2_m = 1;
       this.v.vote_2_f = 0;
@@ -132,8 +111,7 @@ export class RoundComponent implements OnInit {
     this.voteCheck(this.v);
   }
 
-  setSelect3(choice: string, round_id: number) {
-    this.v = this.votes.find(vote => vote.round_id === round_id)
+  setSelect3(choice: string) {
     if (choice == "m") {
       this.v.vote_3_m = 1;
       this.v.vote_3_f = 0;
@@ -155,5 +133,5 @@ export class RoundComponent implements OnInit {
     this.voteCheck(this.v);
   }
 
-
 }
+
