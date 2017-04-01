@@ -10,7 +10,11 @@ import { ROUNDS } from '../mock-data';
 
 @Injectable()
 export class ApiService {
-  private roundsUrl = 'https://mfk-angular-rails-backend.herokuapp.com/rounds';
+  private roundsUrl = 'http://localhost:3000/rounds'
+  private votesUrl = 'http://localhost:3000/votes'
+  
+  /*'https://mfk-angular-rails-backend.herokuapp.com/rounds';
+  'https://mfk-angular-rails-backend.herokuapp.com/votes';*/
 
   constructor(private http: Http) { }
 
@@ -31,7 +35,17 @@ export class ApiService {
       .then(res => res.json())
       .catch(this.handleError);
   }
-  
+
+  apiVote(v: Vote) {
+    console.log("Submitted vote on " + v.round_id + " from " + v.user);
+    console.log(v);
+    return this.http
+      .post(this.votesUrl, JSON.stringify(v), { headers: this.headers })
+      .toPromise()
+      .then(res => res.json())
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error("ERROR FROM HANDLE-ERROR", error);
     return Promise.reject(error.message || error);

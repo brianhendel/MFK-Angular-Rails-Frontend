@@ -29,7 +29,6 @@ export class RoundDashboardComponent implements OnInit {
 
 
   submitVote(v: Vote) {
-    console.log("Submitted vote on " + v.round_id + " from " + v.user);
-    console.log(v);
+    this.apiService.apiVote(v)
   }
 }
