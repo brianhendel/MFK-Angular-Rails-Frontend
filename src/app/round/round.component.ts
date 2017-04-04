@@ -19,6 +19,7 @@ export class RoundComponent implements OnInit {
   v: Vote;
   valid: boolean = false;
   voted: boolean = false;
+  showResult: boolean = false;
 
   constructor(
     protected authTokenService: Angular2TokenService,
@@ -38,6 +39,14 @@ export class RoundComponent implements OnInit {
       this.resetVote();
     }
 
+  }
+
+  showResults() {
+    if (this.showResult == false) {
+      this.showResult = true;
+    } else {
+      this.showResult = false;
+    }
   }
 
   voteCheck(vote: Vote) {

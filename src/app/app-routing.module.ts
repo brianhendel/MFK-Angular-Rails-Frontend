@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RoundDashboardComponent } from './round-dashboard/round-dashboard.component';
 import { RoundComponent } from './round/round.component';
 import { CreateRoundComponent } from './create-round/create-round.component';
+import { RoundResultsComponent } from './round-results/round-results.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'rounds', component: RoundDashboardComponent},
-  {path: 'create-round', component: CreateRoundComponent}
+  {path: 'create-round', component: CreateRoundComponent},
+  {path: 'round-results', component: RoundResultsComponent}
 ];
 
 @NgModule({

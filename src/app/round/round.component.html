@@ -48,8 +48,13 @@
     <div class="card-action">
       <div class="row">
         <a (click)="vote()" class="col s4 waves-effect waves-light btn orange" [ngClass]="{'disabled': !valid}">Vote</a>
-        <a class="col s4 waves-effect waves-light btn blue right" [ngClass]="{'disabled': !voted}">View Results</a>
+        <a (click)="showResults()" class="col s4 waves-effect waves-light btn blue right" [ngClass]="{'disabled': !voted}">View Results</a>
       </div>
+    </div>
+    <div *ngIf="showResult">
+      <app-round-results
+        [round] = "round"
+      ></app-round-results>
     </div>
   </div>
 </div>

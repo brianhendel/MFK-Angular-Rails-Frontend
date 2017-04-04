@@ -12,7 +12,7 @@ import { ROUNDS } from '../mock-data';
 export class ApiService {
   private roundsUrl = 'http://localhost:3000/rounds'
   private votesUrl = 'http://localhost:3000/votes'
-  
+
   /*'https://mfk-angular-rails-backend.herokuapp.com/rounds';
   'https://mfk-angular-rails-backend.herokuapp.com/votes';*/
 
@@ -23,6 +23,14 @@ export class ApiService {
   apiGetRounds(): Promise<Round[]> {
     return this.http
       .get(this.roundsUrl)
+      .toPromise()
+      .then(res => res.json())
+      .catch(this.handleError);
+  }
+
+  apiGetVotes(round_id): Promise<Vote[]> {
+    return this.http
+      .get(this.votesUrl + "/" + round_id)
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);
