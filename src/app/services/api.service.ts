@@ -10,11 +10,11 @@ import { ROUNDS } from '../mock-data';
 
 @Injectable()
 export class ApiService {
-  private roundsUrl = 'http://localhost:3000/rounds'
-  private votesUrl = 'http://localhost:3000/votes'
+  /*private roundsUrl = 'http://localhost:3000/rounds'
+  private votesUrl = 'http://localhost:3000/votes'*/
 
-  /*'https://mfk-angular-rails-backend.herokuapp.com/rounds';
-  'https://mfk-angular-rails-backend.herokuapp.com/votes';*/
+  private roundsUrl = 'https://mfk-angular-rails-backend.herokuapp.com/rounds';
+  private votesUrl = 'https://mfk-angular-rails-backend.herokuapp.com/votes';
 
   constructor(private http: Http) { }
 
