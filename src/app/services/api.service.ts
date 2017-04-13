@@ -16,7 +16,7 @@ export class ApiService {
   private roundsUrl = 'https://mfk-angular-rails-backend.herokuapp.com/rounds';
   private votesUrl = 'https://mfk-angular-rails-backend.herokuapp.com/votes';
 
-  activeRoundId: Number = 20;
+  activeRoundId: Number = 1;
 
   constructor(private http: Http) { }
 
