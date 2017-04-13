@@ -23,6 +23,7 @@ import { RoundComponent } from './round/round.component';
 import { CreateRoundComponent } from './create-round/create-round.component';
 import { RoundDashboardComponent } from './round-dashboard/round-dashboard.component';
 import { RoundResultsComponent } from './round-results/round-results.component';
+import { RoundActiveComponent } from './round-active/round-active.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RoundResultsComponent } from './round-results/round-results.component';
     RoundComponent,
     CreateRoundComponent,
     RoundDashboardComponent,
-    RoundResultsComponent
+    RoundResultsComponent,
+    RoundActiveComponent
   ],
   imports: [
     BrowserModule,

@@ -10,11 +10,13 @@ import { ROUNDS } from '../mock-data';
 
 @Injectable()
 export class ApiService {
-  /*private roundsUrl = 'http://localhost:3000/rounds'
-  private votesUrl = 'http://localhost:3000/votes'*/
+  private roundsUrl = 'http://localhost:3000/rounds'
+  private votesUrl = 'http://localhost:3000/votes'
 
-  private roundsUrl = 'https://mfk-angular-rails-backend.herokuapp.com/rounds';
-  private votesUrl = 'https://mfk-angular-rails-backend.herokuapp.com/votes';
+/*  private roundsUrl = 'https://mfk-angular-rails-backend.herokuapp.com/rounds';
+  private votesUrl = 'https://mfk-angular-rails-backend.herokuapp.com/votes';*/
+
+  activeRoundId: Number = 20;
 
   constructor(private http: Http) { }
 
@@ -36,7 +38,7 @@ export class ApiService {
       .catch(this.handleError);
   }
 
-  apiCreateRounds(newRound): Promise<Round> {
+  apiCreateRound(newRound): Promise<Round> {
     return this.http
       .post(this.roundsUrl, JSON.stringify(newRound), { headers: this.headers })
       .toPromise()
@@ -53,6 +55,21 @@ export class ApiService {
       .then(res => res.json())
       .catch(this.handleError);
   }
+
+  apiGetActiveRound() {
+    return this.http
+      .get(this.roundsUrl + "/" + this.activeRoundId)
+      .toPromise()
+      .then(res => res.json())
+      .catch(this.handleError);
+  }
+
+  apiSetActiveRound(id: Number) {
+    this.activeRoundId = id;
+    this.apiGetActiveRound()
+  }
+
+
 
   private handleError(error: any): Promise<any> {
     console.error("ERROR FROM HANDLE-ERROR", error);

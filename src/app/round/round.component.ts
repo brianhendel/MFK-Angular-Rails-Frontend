@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 import { Round } from '../models/round';
 import { Vote } from '../models/vote';
 
 import { Angular2TokenService } from 'angular2-token';
+import { ApiService } from '../services/api.service'
 import { MaterializeModule } from 'angular2-materialize';
 import { ImageZoomModule } from 'angular2-image-zoom';
 
@@ -15,7 +16,7 @@ import { ImageZoomModule } from 'angular2-image-zoom';
 
 export class RoundComponent implements OnInit {
   @Input() round: Round;
-  @Output() submitVote = new EventEmitter<Vote>();
+  @Input() inDashboard: Boolean;
   v: Vote;
   valid: boolean = false;
   voted: boolean = false;
@@ -23,22 +24,33 @@ export class RoundComponent implements OnInit {
 
   constructor(
     protected authTokenService: Angular2TokenService,
+    private apiService: ApiService
   ) { }
 
   ngOnInit() {
+
+  }
+
+  ngOnChanges() {
     this.v = new Vote(this.round.id, this.authTokenService.currentUserData.email);
+    console.log("ngOnChanges fired");
+
   }
 
   vote() {
     if (this.voteCheck(this.v)) {
-      this.submitVote.emit(this.v);
+      this.apiService.apiVote(this.v);
       this.voted = true;
+      this.showResult = false;
       this.resetVote();
     } else {
       console.log("Not a valid vote, reset")
       this.resetVote();
     }
+  }
 
+  setActive() {
+    this.apiService.apiSetActiveRound(this.round.id)
   }
 
   showResults() {

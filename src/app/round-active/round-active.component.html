@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <a class="col s4 waves-effect waves-light btn blue center" [routerLink]="['/rounds']" style="margin-top: 0.75em">Round Dashboard</a>
+    <a class="col s4 waves-effect waves-light btn orange right" [routerLink]="['/create-round']" style="margin-top: 0.75em">Create New Round</a>
+  </div>
+</div>
+
+<app-round *ngIf="data" [round]="activeRound">
+</app-round>

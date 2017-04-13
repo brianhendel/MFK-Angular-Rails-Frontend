@@ -5,7 +5,7 @@
       <ul class="right hide-on-sm-and-down">
         <li *ngIf="!(authService.userSignedIn$ | async)"><a (click)="presentAuthDialog()">Login</a></li>
         <li *ngIf="!(authService.userSignedIn$ | async)"><a (click)="presentAuthDialog('register')">Register</a></li>
-        <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']">Profile</a></li>
+        <!--<li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']">Profile</a></li>-->
         <li *ngIf="(authService.userSignedIn$ | async)"><a (click)="logOut()">Logout</a></li>
       </ul>
     </div>

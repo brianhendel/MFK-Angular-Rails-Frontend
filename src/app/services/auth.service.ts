@@ -17,6 +17,10 @@ export class AuthService {
     this.userSignedIn$.next(this.authService.userSignedIn())
    }
 
+   checkSignIn() {
+     return this.authService.userSignedIn()
+   }
+
    logOutUser():Observable<Response> {
      return this.authService.signOut().map(
        res => {

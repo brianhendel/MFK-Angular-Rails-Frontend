@@ -1,11 +1,11 @@
-<div class="container">
+<div class= "container">
   <div class="row">
-    <h5 class="col s7">All Rounds</h5>
+    <a class="col s4 waves-effect waves-light btn blue left" [routerLink]="['/']" style="margin-top: 0.75em">Home</a>
     <a class="col s4 waves-effect waves-light btn orange right" [routerLink]="['/create-round']" style="margin-top: 0.75em">Create New Round</a>
   </div>
 </div>
 
 <app-round *ngFor="let round of rounds"
   [round] = "round"
-  (submitVote)  = "submitVote($event)">
+  [inDashboard] = "inDashboard">
 </app-round>

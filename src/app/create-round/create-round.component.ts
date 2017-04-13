@@ -23,8 +23,9 @@ export class CreateRoundComponent implements OnInit {
   }
 
   onCreateSubmit() {
-    this.apiService.apiCreateRounds(this.newRound)
-    this.router.navigate(['/rounds'])
+    this.apiService.apiCreateRound(this.newRound);
+    this.router.navigate(['/']);
+    this.apiService.apiGetRounds();
   }
 
 }

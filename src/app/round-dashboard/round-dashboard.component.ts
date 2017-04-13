@@ -16,6 +16,7 @@ import { MaterializeModule } from 'angular2-materialize';
 
 export class RoundDashboardComponent implements OnInit {
   rounds: Round[] = [];
+  inDashboard: Boolean = true;
 
   constructor(
     private apiService: ApiService
@@ -27,8 +28,11 @@ export class RoundDashboardComponent implements OnInit {
       .then(rounds => {console.log(rounds)})
   }
 
-
-  submitVote(v: Vote) {
-    this.apiService.apiVote(v)
+  activeSetter(id: Number) {
+    this.apiService.apiSetActiveRound(id);
+    this.apiService.apiGetRounds()
+      .then(rounds => this.rounds = rounds)
+      .then(rounds => {console.log(rounds)})
   }
+
 }
