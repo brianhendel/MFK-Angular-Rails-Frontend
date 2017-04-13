@@ -13,7 +13,6 @@ import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'rounds', component: RoundDashboardComponent},
   {path: 'create-round', component: CreateRoundComponent},
   {path: 'round-results', component: RoundResultsComponent}
