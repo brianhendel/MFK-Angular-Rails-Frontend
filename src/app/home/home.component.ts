@@ -21,5 +21,8 @@ export class HomeComponent implements OnInit {
 
   }
 
+  checkSignInStatus() {
+    return this.authService.checkSignIn()
+  }
 
 }

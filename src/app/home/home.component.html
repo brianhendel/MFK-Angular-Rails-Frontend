@@ -1,10 +1,10 @@
-<div *ngIf="!(authService.checkSignIn())" class="row">
+<div *ngIf="!(checkSignInStatus())" class="row">
   <div class="col s12">
     <h1>Welcome</h1>
     <h3>Login to join to start playing</h3>
   </div>
 </div>
 
-<div *ngIf="(authService.checkSignIn())" class="row">
+<div *ngIf="(checkSignInStatus())" class="row">
   <app-round-active></app-round-active>
 </div>
