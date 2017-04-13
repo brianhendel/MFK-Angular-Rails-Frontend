@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 
 import { Round } from '../models/round';
 import { Vote } from '../models/vote';
@@ -30,7 +30,7 @@ export class RoundComponent implements OnInit {
 
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     this.v = new Vote(this.round.id, this.authTokenService.currentUserData.email);
     console.log("ngOnChanges fired");
 
