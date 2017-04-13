@@ -5,7 +5,6 @@ import { Vote } from '../models/vote';
 
 import { ApiService } from '../services/api.service';
 import { MaterializeModule } from 'angular2-materialize';
-import { ImageZoomModule } from 'angular2-image-zoom';
 
 @Component({
   selector: 'app-round-results',
