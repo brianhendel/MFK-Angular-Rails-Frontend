@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
 import { RoundDashboardComponent } from './round-dashboard/round-dashboard.component';
 import { RoundComponent } from './round/round.component';
 import { CreateRoundComponent } from './create-round/create-round.component';
